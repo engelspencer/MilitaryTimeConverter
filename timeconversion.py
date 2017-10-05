@@ -35,7 +35,16 @@ if (':' in time):
 		print (conversion)
 elif ((time[0] == '0' or time[0] == '1' or time[0] == '2') and (time[1] == '0' or time[1] == '1' or time[1] == '2' or time[1] == '3' or time[1] == '4' or time[1] == '5' or time[1] == '6' or time[1] == '7' or time[1] == '8' or time[1] == '9') and (time[2] == '0' or time[2] == '1' or time[2] == '2' or time[2] == '3' or time[2] == '4' or time[2] == '5') and (time[3] == '0' or time[3] == '1' or time[3] == '2' or time[3] == '3' or time[3] == '4' or time[3] == '5' or time[3] == '6' or time[3] == '7' or time[3] == '8' or time[3] == '9')):
 	milmath = int(time)
-	if (milmath < 1200 and not milmath <):
-		conversion = time[0] + time[1] + ':' 
+	if (milmath >= 0 and milmath < 1000):
+		if (milmath < 10):
+			conversion = '12:0' + time[3] + ' am'
+		elif (milmath < 100):
+			conversion = '12:' + time[2] + time[3] + ' am'
+		elif (milmath < 1000):
+			conversion = time[1] + ':'  + time[2] + time[3] + ' am'
+		else:
+			print ('Error: unrecognized format')
+	elif (milmath < 1200 and milmath > 999):
+		conversion = time[0] + time[1] + ':' + time[2] + time[3] + ' am'
 else:
 	print ("Error: unrecognized format")
